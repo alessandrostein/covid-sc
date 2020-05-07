@@ -1,0 +1,96 @@
+<%= form_for [@hospital, @patient], :html => { :class => "form-horizontal patient" } do |f| %>
+
+  <% if @patient.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @patient.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :hospital_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :hospital_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:hospital_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :full_name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :full_name, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:full_name) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :birthday, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :birthday, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:birthday) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :airways, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :airways, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:airways) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :status, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :status, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:status) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :hospitalization_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :hospitalization_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:hospitalization_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :departure_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :departure_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:departure_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :cns, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :cns, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:cns) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sisreg, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sisreg, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sisreg) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :departure_reason, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :departure_reason, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:departure_reason) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")), hospital_patients_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

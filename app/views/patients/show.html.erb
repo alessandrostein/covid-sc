@@ -1,0 +1,37 @@
+<%- model_class = Patient -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:hospital_id) %>:</strong></dt>
+  <dd><%= @patient.hospital_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:full_name) %>:</strong></dt>
+  <dd><%= @patient.full_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:birthday) %>:</strong></dt>
+  <dd><%= @patient.birthday %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:airways) %>:</strong></dt>
+  <dd><%= @patient.airways %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
+  <dd><%= @patient.status %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:hospitalization_date) %>:</strong></dt>
+  <dd><%= @patient.hospitalization_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:departure_date) %>:</strong></dt>
+  <dd><%= @patient.departure_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:cns) %>:</strong></dt>
+  <dd><%= @patient.cns %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:sisreg) %>:</strong></dt>
+  <dd><%= @patient.sisreg %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:departure_reason) %>:</strong></dt>
+  <dd><%= @patient.departure_reason %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              patients_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_patient_path(@patient), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              patient_path(@patient),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

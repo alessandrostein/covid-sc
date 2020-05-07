@@ -1,10 +1,5 @@
 return unless Rails.env.development?
 
-User.create!(
-  email: 'user@email.com',
-  password: 'nopasswd'
-)
-
 Hospital.create!(
   acronym: 'HMSJ',
   name: 'Hospital Municipal São José',
@@ -19,4 +14,16 @@ Hospital.create!(
   city: 'Joinville',
   phone_number: '(47) 3461-5500',
   email: 'hrhds@saude.sc.gov.br'
+)
+
+User.create!(
+  email: 'dev.one@email.com',
+  password: 'nopasswd',
+  hospital: Hospital.first
+)
+
+User.create!(
+  email: 'dev.two@email.com',
+  password: 'nopasswd',
+  hospital: Hospital.last
 )

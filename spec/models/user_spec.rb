@@ -1,10 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  context('when valid') do
-    subject { build(:user) }
+  describe('factory') do
+    context('when valid') do
+      subject { build(:user) }
 
-    it { is_expected.to be_valid }
+      it { is_expected.to be_valid }
+    end
+
+    context('associations') do
+      let(:user) { build(:user) }
+
+      it 'has hospital' do
+        expect(user.hospital).to be_present
+      end
+    end
   end
 
   describe('email') do

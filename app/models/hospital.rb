@@ -1,5 +1,6 @@
 class Hospital < ApplicationRecord
   has_one :hospital_bed, dependent: :nullify
+  has_many :users
   has_many :patients
 
   validates :acronym, presence: true, length: { maximum: 8 }

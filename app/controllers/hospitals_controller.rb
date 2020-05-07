@@ -1,18 +1,14 @@
 class HospitalsController < ApplicationController
-  def index
-    @hospitals = Hospital.all
-  end
-
   def show
-    @hospital = Hospital.find(params[:id])
+    @hospital = current_user.hospital
   end
 
   def edit
-    @hospital = Hospital.find(params[:id])
+    @hospital = current_user.hospital
   end
 
   def update
-    @hospital = Hospital.find(params[:id])
+    @hospital = current_user.hospital
 
     respond_to do |format|
       if @hospital.update(hospital_params)
@@ -22,16 +18,6 @@ class HospitalsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @hospital.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  def destroy
-    @hospital = Hospital.find(params[:id])
-
-    @hospital.destroy
-    respond_to do |format|
-      format.html { redirect_to hospitals_url, notice: 'Hospital was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

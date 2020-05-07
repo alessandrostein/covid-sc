@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root to: 'hospitals#index'
+  root to: 'hospitals#show'
 
-  resources :hospitals, only: %i[index show edit update] do
+  resource :hospital, only: %i[show edit update] do
     resources :patients
   end
 end

@@ -1,4 +1,4 @@
-# template-rails
+# COVID SC
 
 - [Dependencies](#dependencies)
 - [Development](#development)

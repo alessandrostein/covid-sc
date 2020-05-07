@@ -7,9 +7,8 @@
 
 Things you need to install to run this project:
 
-- Ruby >= 2.7.1
+- Ruby >= 2.6.5
 - Node >= 13.2.0
-- PostgreSQL 12.1
 
 **Ubuntu**
 

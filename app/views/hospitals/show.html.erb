@@ -133,21 +133,21 @@
           </tr>
         </thead>
         <tbody>
-          {% for patient in object.patient_set.all %}
-              <tr>
-              <th class="text-center" scope="row">{{patient.name}}</th>
-              <td class="text-center">{{ patient.birthday|date:"SHORT_DATE_FORMAT" }}</td>
-              <td class="text-center">{{ patient.hospitalization_date|date:"SHORT_DATE_FORMAT" }}</td>
-              <td class="text-center">{{ patient.get_airways_display }}</td>
-              <td class="text-center">{{ patient.get_status_display }}</td>
-              <td class="text-center">{{ patient.cns }}</td>
-              <td class="text-center">{{ patient.sisreg }}</td>
-              <td class="text-center">{{ patient.departure_date|date:"SHORT_DATE_FORMAT" }}</td>
-              <td class="text-center">{{ patient.get_departure_reason_display }}</td>
-              <td class="text-center">{{ patient.patientbed_set.first.bed }}</td>
-              <td class="text-center">{{ patient.patientbed_set.first.waiting_uti|yesno:"Sim,Não" }}</td>
+          <% @hospital.patients.each do |patient| %>
+            <tr>
+              <th class="text-center" scope="row"> <%= patient.full_name %> </th>
+              <td class="text-center"> <%= patient.birthday ? l(patient.birthday) : 'Não Informado' %></td>
+              <td class="text-center"> <%= patient.hospitalization_date ? l(patient.hospitalization_date) : 'Não Informado' %> </td>
+              <td class="text-center"> <%= Patient.human_enum_name(:airways, patient.airways) %> </td>
+              <td class="text-center"> <%= Patient.human_enum_name(:status, patient.status) %> </td>
+              <td class="text-center"> <%= patient.cns %> </td>
+              <td class="text-center"> <%= patient.sisreg %> </td>
+              <td class="text-center"> <%= patient.departure_date ? l(patient.departure_date) : 'Não Informado' %> </td>
+              <td class="text-center"> <%= Patient.human_enum_name(:departure_reason, patient.departure_reason) %> </td>
+              <td class="text-center"> <%= PatientBed.human_enum_name(:bed_type, patient.patient_bed.bed_type) if patient.patient_bed %> </td>
+              <td class="text-center"> <%= patient.patient_bed.waiting_uti if patient.patient_bed %> </td>
             </tr>
-          {% endfor %}
+          <% end %>
         </tbody>
       </table>
     </div>

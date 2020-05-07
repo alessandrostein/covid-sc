@@ -1,27 +1,26 @@
 class PatientsController < ApplicationController
   def index
-    puts("HOSPITAOLS", params, params[:hospital_id])
-    @hospital = Hospital.find(params[:hospital_id])
+    @hospital = current_account.hospital
     @patients = @hospital.patients
   end
 
   def show
-    @hospital = Hospital.find(params[:hospital_id])
+    @hospital = current_account.hospital
     @patient = @hospital.patients.find(params[:id])
   end
 
   def new
-    @hospital = Hospital.find(params[:hospital_id])
+    @hospital = current_account.hospital
     @patient = @hospital.patients.new
   end
 
   def edit
-    @hospital = Hospital.find(params[:hospital_id])
+    @hospital = current_account.hospital
     @patient = @hospital.patients.find(params[:id])
   end
 
   def create
-    @hospital = Hospital.find(params[:hospital_id])
+    @hospital = current_account.hospital
     @patient = @hospital.patients.new(patient_params)
 
     respond_to do |format|

@@ -9,8 +9,9 @@ gem 'rails', '~> 6.0.2'
 
 gem 'bootstrap_form', '~> 4.0'
 gem 'jbuilder', '~> 2.7'
+gem 'rails-i18n', '~> 6.0.0'
 gem 'sass-rails', '>= 6'
-gem "twitter-bootstrap-rails"
+gem 'twitter-bootstrap-rails'
 gem 'webpacker', '~> 4.0'
 
 gem 'activeadmin'

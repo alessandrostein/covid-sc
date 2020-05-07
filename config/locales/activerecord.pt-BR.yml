@@ -1,0 +1,17 @@
+pt-BR:
+  activerecord:
+    attributes:
+      patient:
+        airways:
+          ar_ambiente: Ar Ambiente
+          ventilacao_mecanica: Ventilação Mecânica
+          ventilacao_nao_invasiva: Ventilação Não Invasiva
+        statuses:
+          confirmado: Confirmado
+          descartado: Descartado
+          suspeito: Suspeito
+        departure_reasons:
+          alta: Alta
+          obito: Óbito
+      patient_bed:
+        bed_types:

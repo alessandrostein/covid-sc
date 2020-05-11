@@ -2,9 +2,21 @@ class Patient < ApplicationRecord
   belongs_to :hospital
   has_one :patient_bed
 
-  enum airways: %i[ventilacao_mecanica ar_ambiente ventilacao_nao_invasiva]
-  enum departure_reason: %i[alta obito]
-  enum status: %i[suspeito confirmado descartado]
+  enum airways: {
+    ventilacao_mecanica: 0,
+    ar_ambiente: 1,
+    ventilacao_nao_invasiva: 2
+  }
+
+  enum departure_reason: {
+    alta: 0,
+    obito: 1
+  }
+  enum status: {
+    suspeito: 0,
+    confirmado: 1,
+    descartado: 2
+  }
 
   validates :airways, presence: true
   validates :cns, length: { maximum: 30 }

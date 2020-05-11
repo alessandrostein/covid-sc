@@ -1,5 +1,5 @@
 RSpec.configure do |config|
   config.before(:each) do
-    Faker::Config.locale = 'pt-BR'
+    I18n.available_locales = %i[en pt-BR en-US]
   end
 end

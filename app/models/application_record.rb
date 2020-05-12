@@ -6,6 +6,6 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def self.human_enum_selectable(enum_name, enum)
-    enum.map { |key, value| [ human_enum_name(enum_name, key), value ] }.to_h
+    enum.map { |key, value| [ human_enum_name(enum_name, key), key ] }.to_h
   end
 end

@@ -1,4 +1,9 @@
 pt-BR:
+  helpers:
+    links:
+      back: Voltar
+      edit: Editar
+      destroy: Apagar
   views:
     patients:
       new:

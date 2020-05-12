@@ -24,18 +24,18 @@ class PatientsController < ApplicationController
     @patient = @hospital.patients.new(patient_params)
 
     if @patient.save
-      redirect_to @patient, notice: 'Patient was successfully created.'
+      redirect_to hospital_patient_url(@patient), notice: 'Patient was successfully created.'
     else
       render :new
     end
   end
 
   def update
-    @hospital = Hospital.find(params[:hospital_id])
+    @hospital = current_user.hospital
     @patient = @hospital.patients.find(params[:id])
 
     if @patient.update(patient_params)
-      redirect_to @patient, notice: 'Patient was successfully updated.'
+      redirect_to hospital_patient_url(@patient), notice: 'Patient was successfully updated.'
     else
       render :edit
     end
@@ -51,6 +51,16 @@ class PatientsController < ApplicationController
 
   private
     def patient_params
-      params.require(:patient).permit(:id, :hospital_id)
+      params.require(:patient).permit(
+        :full_name,
+        :birthday,
+        :hospitalization_date,
+        :cns,
+        :sisreg,
+        :airways,
+        :status,
+        :departure_date,
+        :departure_reason,
+      ).merge(hospital: @hospital)
     end
 end

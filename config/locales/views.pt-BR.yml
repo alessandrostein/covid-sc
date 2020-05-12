@@ -1,0 +1,9 @@
+pt-BR:
+  views:
+    patients:
+      new:
+        title: Novo Paciente
+      edit:
+        title: Editar Paciente
+      form:
+        cancel: Cancelar

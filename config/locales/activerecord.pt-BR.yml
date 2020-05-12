@@ -1,17 +1,27 @@
 pt-BR:
   activerecord:
+    models:
+      patient: Paciente
     attributes:
       patient:
+        full_name: Nome completo
+        birthday: Data de nacimento
+        departure_date: Data de saída
+        hospitalization_date: Data de Hospitalização
+        cns: Carteira Nacional do SUS
+        sisreg: Sisreg
         airways:
           one: Ventilação
-          ar_ambiente: Ar Ambiente
-          ventilacao_mecanica: Ventilação Mecânica
-          ventilacao_nao_invasiva: Ventilação Não Invasiva
-        statuses:
+          ar_ambiente: Ar ambiente
+          ventilacao_mecanica: Ventilação mecânica
+          ventilacao_nao_invasiva: Ventilação não invasiva
+        status:
+          one: Status
           confirmado: Confirmado
           descartado: Descartado
           suspeito: Suspeito
-        departure_reasons:
+        departure_reason:
+          one: Motivo da saída
           alta: Alta
           obito: Óbito
       patient_bed:

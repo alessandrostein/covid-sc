@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe(ApplicationController, type: :controller) do
   describe 'Redirect to correct page' do
     let(:user) { create(:user) }
-    let(:admin_user) { create(:admin) }
+    let(:admin_user) { create(:admin, hospital: nil) }
 
     context 'when is a common user' do
       it 'return hospitals index page' do

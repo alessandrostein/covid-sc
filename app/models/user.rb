@@ -13,4 +13,11 @@ class User < ApplicationRecord
   }
 
   validates :role, presence: true
+  validate :admin_cant_have_hospital
+
+  private
+
+  def admin_cant_have_hospital
+    errors.add(:hospital, 'Administradores não podem ser vinculados à hospitais.') if admin? && hospital.present?
+  end
 end

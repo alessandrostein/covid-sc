@@ -1,5 +1,5 @@
 <tr>
-  <th class="text-center" scope="row"> <%= patient.full_name %> </th>
+  <th class="text-center" scope="row"> <%= link_to patient.full_name, hospital_patient_path(patient) %> </th>
   <td class="text-center"> <%= patient.birthday ? l(patient.birthday) : 'Não Informado' %></td>
   <td class="text-center"> <%= patient.hospitalization_date ? l(patient.hospitalization_date) : 'Não Informado' %> </td>
   <td class="text-center"> <%= Patient.human_enum_name(:airways, patient.airways) %> </td>

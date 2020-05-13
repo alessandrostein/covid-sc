@@ -28,6 +28,12 @@ User.create!(
   hospital: Hospital.last
 )
 
+User.create!(
+  email: 'admin.one@email.com',
+  password: 'nopasswd',
+  role: :admin
+)
+
 10.times do
   Patient.create!(
     hospital: Hospital.first,

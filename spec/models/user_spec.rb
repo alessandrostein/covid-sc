@@ -39,4 +39,10 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of(:password) }
     it { is_expected.to validate_confirmation_of(:password) }
   end
+
+  describe('role') do
+    subject { User.new }
+
+    it { is_expected.to validate_presence_of(:role) }
+  end
 end

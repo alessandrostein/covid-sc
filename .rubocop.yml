@@ -1,0 +1,9 @@
+inherit_from:
+  - rubocop.yml
+
+AllCops:
+  TargetRubyVersion: 2.6.5
+  Exclude:
+    - db/**/*
+    - node_modules/**/*
+    - bin/**/*

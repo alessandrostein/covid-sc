@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 FactoryBot.define do
   factory :hospital do
     acronym { Faker::Alphanumeric.alpha(number: 2) }

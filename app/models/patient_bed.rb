@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class PatientBed < ApplicationRecord
   belongs_to :patient
 

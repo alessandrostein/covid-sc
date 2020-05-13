@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class PatientsController < ApplicationController
   def index
     @hospital = current_user.hospital
@@ -24,9 +25,9 @@ class PatientsController < ApplicationController
     @patient = @hospital.patients.new(patient_params)
 
     if @patient.save
-      redirect_to hospital_patient_url(@patient), notice: 'Patient was successfully created.'
+      redirect_to(hospital_patient_url(@patient), notice: 'Patient was successfully created.')
     else
-      render :new
+      render(:new)
     end
   end
 
@@ -35,9 +36,9 @@ class PatientsController < ApplicationController
     @patient = @hospital.patients.find(params[:id])
 
     if @patient.update(patient_params)
-      redirect_to hospital_patient_url(@patient), notice: 'Patient was successfully updated.'
+      redirect_to(hospital_patient_url(@patient), notice: 'Patient was successfully updated.')
     else
-      render :edit
+      render(:edit)
     end
   end
 
@@ -46,21 +47,22 @@ class PatientsController < ApplicationController
     @patient = @hospital.patients.find(params[:id])
 
     @patient.destroy
-    redirect_to patients_url, notice: 'Patient was successfully destroyed.'
+    redirect_to(patients_url, notice: 'Patient was successfully destroyed.')
   end
 
   private
-    def patient_params
-      params.require(:patient).permit(
-        :full_name,
-        :birthday,
-        :hospitalization_date,
-        :cns,
-        :sisreg,
-        :airways,
-        :status,
-        :departure_date,
-        :departure_reason,
-      ).merge(hospital: @hospital)
-    end
+
+  def patient_params
+    params.require(:patient).permit(
+      :full_name,
+      :birthday,
+      :hospitalization_date,
+      :cns,
+      :sisreg,
+      :airways,
+      :status,
+      :departure_date,
+      :departure_reason,
+    ).merge(hospital: @hospital)
+  end
 end

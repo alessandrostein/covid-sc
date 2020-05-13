@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class HospitalBed < ApplicationRecord
   belongs_to :hospital
 
@@ -8,8 +9,8 @@ class HospitalBed < ApplicationRecord
     clinico_adulto: 3,
     clinico_pediatrico: 4,
     clinico_neonatal: 5,
-    leito_simples_com_ventilador_mecanico: 6
-}
+    leito_simples_com_ventilador_mecanico: 6,
+  }
 
   validates :bed_type, presence: true
   validates :total, presence: true

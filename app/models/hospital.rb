@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Hospital < ApplicationRecord
   has_one :hospital_bed, dependent: :nullify
   has_many :users

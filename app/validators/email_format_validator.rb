@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class EmailFormatValidator < ActiveModel::EachValidator
   REGEX = /\A[\w\.\+\-_]+\w@[\w\-]+(\.[\w]+)*\.[\w]+\z/
 

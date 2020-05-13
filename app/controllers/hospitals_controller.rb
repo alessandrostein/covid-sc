@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class HospitalsController < ApplicationController
   def show
     @hospital = current_user.hospital
@@ -12,15 +13,15 @@ class HospitalsController < ApplicationController
     @hospital = current_user.hospital
 
     if @hospital.update(hospital_params)
-      redirect_to @hospital, notice: 'Hospital was successfully updated.'
+      redirect_to(@hospital, notice: 'Hospital was successfully updated.')
     else
-      render :edit
+      render(:edit)
     end
   end
 
   private
 
-    def hospital_params
-      params.require(:hospital).permit(:acronym, :name, :city, :phone_number, :email)
-    end
+  def hospital_params
+    params.require(:hospital).permit(:acronym, :name, :city, :phone_number, :email)
+  end
 end

@@ -2,7 +2,14 @@ pt-BR:
   activerecord:
     models:
       patient: Paciente
+      user: 
+        one: Usuário
+        other: Usuários
     attributes:
+      user:
+        role: Tipo de usuário
+        password: Senha
+        password_confirmation: Confirmação de Senha
       patient:
         full_name: Nome completo
         birthday: Data de nacimento

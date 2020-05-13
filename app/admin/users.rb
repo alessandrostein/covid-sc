@@ -1,11 +1,26 @@
 # frozen_string_literal: true
 ActiveAdmin.register(User) do
-  permit_params :email, :password, :password_confirmation
+  permit_params :email, :password, :password_confirmation, :role, :hospital_id
+
+  controller do
+    def update_resource(object, attributes)
+      attributes.each do |attr|
+        if attr[:password].blank? && attr[:password_confirmation].blank?
+          attr.delete(:password)
+          attr.delete(:password_confirmation)
+        end
+      end
+
+      object.send(:update_attributes, *attributes)
+    end
+  end
 
   index do
     selectable_column
     id_column
     column :email
+    column :role
+    column :hospital
     actions
   end
 
@@ -14,6 +29,8 @@ ActiveAdmin.register(User) do
   form do |f|
     f.inputs do
       f.input(:email)
+      f.input(:role)
+      f.input(:hospital)
       f.input(:password)
       f.input(:password_confirmation)
     end

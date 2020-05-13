@@ -16,6 +16,14 @@ RSpec.describe(User, type: :model) do
         expect(user.hospital).to(be_present)
       end
     end
+
+    context 'admin user cant have a hospital' do
+      let(:invalid_admin_user) { build(:admin) }
+      let(:valid_admin_user) { build(:admin, hospital: nil) }
+
+      it { expect(invalid_admin_user).to_not(be_valid) }
+      it { expect(valid_admin_user).to(be_valid) }
+    end
   end
 
   describe('email') do

@@ -38,6 +38,8 @@ jobs:
           POSTGRES_PASSWORD: postgres
       - name: Run RSpec
         run: COVERAGE=true bundle exec rspec -f d
+      - name: Run Rubocop
+        run: COVERAGE=true bundle exec rubocop
         env:
           RAILS_ENV: test
           POSTGRES_USER: postgres

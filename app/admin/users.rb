@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 ActiveAdmin.register(User) do
-  permit_params :email, :password, :password_confirmation
+  permit_params :email, :password, :password_confirmation, :role
 
   controller do
     def update_resource(object, attributes)
@@ -19,6 +19,7 @@ ActiveAdmin.register(User) do
     selectable_column
     id_column
     column :email
+    column :role
     actions
   end
 
@@ -27,6 +28,7 @@ ActiveAdmin.register(User) do
   form do |f|
     f.inputs do
       f.input(:email)
+      f.input(:role)
       f.input(:password)
       f.input(:password_confirmation)
     end

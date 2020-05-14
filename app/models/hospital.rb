@@ -4,6 +4,7 @@ class Hospital < ApplicationRecord
   has_many :users
   has_many :patients
   has_many :reports
+  has_many :hospital_beds
 
   validates :acronym, presence: true, length: { maximum: 8 }
   validates :name, presence: true, length: { maximum: 256 }

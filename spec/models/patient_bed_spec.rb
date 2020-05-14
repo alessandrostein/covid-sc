@@ -8,23 +8,25 @@ RSpec.describe(PatientBed, type: :model) do
     it { is_expected.to(be_valid) }
   end
 
-  describe('bed_type') do
-    subject { PatientBed.new }
-
-    it { is_expected.to(allow_value(:uti_adulto).for(:bed_type)) }
+  context('associations') do
+    it { should belong_to(:patient) }
   end
 
-  describe('waiting_uti') do
+  context 'attributes' do
     subject { PatientBed.new }
 
-    it { is_expected.to(allow_value(true).for(:waiting_uti)) }
-    it { is_expected.to(allow_value(false).for(:waiting_uti)) }
-    it { is_expected.to_not(allow_value(nil).for(:waiting_uti)) }
-  end
+    describe('bed_type') do
+      it { is_expected.to(allow_value(:uti_adulto).for(:bed_type)) }
+    end
 
-  describe('admission_date') do
-    subject { PatientBed.new }
+    describe('waiting_uti') do
+      it { is_expected.to(allow_value(true).for(:waiting_uti)) }
+      it { is_expected.to(allow_value(false).for(:waiting_uti)) }
+      it { is_expected.to_not(allow_value(nil).for(:waiting_uti)) }
+    end
 
-    it { is_expected.to(validate_presence_of(:admission_date)) }
+    describe('admission_date') do
+      it { is_expected.to(validate_presence_of(:admission_date)) }
+    end
   end
 end

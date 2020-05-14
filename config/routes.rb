@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   root to: 'hospitals#show'
 
+  resource :report, only: %i[create]
+
   resource :hospital, only: %i[show edit update] do
     resources :patients
   end

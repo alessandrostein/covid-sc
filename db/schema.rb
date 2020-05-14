@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_12_151537) do
+ActiveRecord::Schema.define(version: 2020_05_13_181509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,12 +76,13 @@ ActiveRecord::Schema.define(version: 2020_05_12_151537) do
 
   create_table "reports", force: :cascade do |t|
     t.bigint "hospital_id", null: false
-    t.datetime "report_date"
     t.string "informant_name", default: "", null: false
     t.string "informant_function", limit: 15, default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
     t.index ["hospital_id"], name: "index_reports_on_hospital_id"
+    t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -104,5 +105,6 @@ ActiveRecord::Schema.define(version: 2020_05_12_151537) do
   add_foreign_key "patient_beds", "patients"
   add_foreign_key "patients", "hospitals"
   add_foreign_key "reports", "hospitals"
+  add_foreign_key "reports", "users"
   add_foreign_key "users", "hospitals"
 end

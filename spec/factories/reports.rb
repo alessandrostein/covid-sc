@@ -2,8 +2,9 @@
 FactoryBot.define do
   factory :report do
     hospital
+    user
+
     informant_name { Faker::Name.name }
-    informant_function { "função" }
-    report_date { Faker::Date.between(from: 2.days.ago, to: Date.today) }
+    informant_function { 'função' }
   end
 end

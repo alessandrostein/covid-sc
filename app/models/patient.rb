@@ -19,9 +19,9 @@ class Patient < ApplicationRecord
     descartado: 2,
   }
 
-  validates :airways, presence: true
-  validates :cns, length: { maximum: 30 }
-  validates :hospitalization_date, presence: true
   validates :full_name, presence: true
-  validates :sisreg, length: { maximum: 30 }
+  validates :airways, presence: true
+  validates :hospitalization_date, presence: true
+  validates :cns, length: { is: 15 }
+  validates :sisreg, length: { is: 9 }
 end

@@ -30,8 +30,8 @@ RSpec.describe(Patient, type: :model) do
     end
 
     describe('cns') do
-      it { is_expected.to(allow_value('12345678').for(:cns)) }
-      it { is_expected.to(validate_length_of(:cns).is_at_most(30)) }
+      it { is_expected.to(allow_value('aaaaaaaaaabbbbb').for(:cns)) }
+      it { is_expected.to(validate_length_of(:cns).is_equal_to(15)) }
     end
 
     describe('full_name') do
@@ -40,8 +40,8 @@ RSpec.describe(Patient, type: :model) do
     end
 
     describe('sisreg') do
-      it { is_expected.to(allow_value('12345678').for(:sisreg)) }
-      it { is_expected.to(validate_length_of(:sisreg).is_at_most(30)) }
+      it { is_expected.to(allow_value('aaaaaaaaa').for(:sisreg)) }
+      it { is_expected.to(validate_length_of(:sisreg).is_equal_to(9)) }
     end
 
     describe('hospitalization_date') do

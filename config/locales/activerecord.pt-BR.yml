@@ -5,11 +5,33 @@ pt-BR:
       user: 
         one: Usuário
         other: Usuários
+      hospital:
+        one: Hospital
+        other: Hospitais      
     attributes:
       user:
         role: Tipo de usuário
         password: Senha
         password_confirmation: Confirmação de Senha
+      hospital:
+        acronym: Acrónimo
+        name: Nome
+        city: Cidade
+        phone_number: Telefone
+      hospital_bed:
+        bed_type: Tipo de Leito
+        total: Leitos disponíveis
+        total: Leitos dedicados ao COVID
+      hospital_bed:
+        bed_type:
+          one: Tipo de Leito
+          uti_adulto: UTI Adulto
+          uti_pediatrica: UTI Pediátrica
+          uti_neonatal: UTI Neonatal
+          clinico_adulto: Clínico Adulto
+          clinico_pediatrico: Clínico Pediátrico
+          clinico_neonatal: Clínico Neonatal
+          leito_simples_com_ventilador_mecanico: Simples Ventilador Mecânico
       patient:
         full_name: Nome completo
         birthday: Data de nacimento

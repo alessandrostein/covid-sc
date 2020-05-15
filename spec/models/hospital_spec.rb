@@ -56,4 +56,12 @@ RSpec.describe(Hospital, type: :model) do
       it { is_expected.to_not(allow_value('').for(:email)) }
     end
   end
+
+  describe('hospital beds') do
+    subject { Hospital.new(attributes_for(:hospital)) }
+
+    it 'create hospital bed after commit on create action' do
+      expect { subject.save }.to(change { HospitalBed.all.count })
+    end
+  end
 end

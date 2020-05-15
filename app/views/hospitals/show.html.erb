@@ -1,5 +1,5 @@
 <%= render partial: 'info', locals: { hospital: @hospital } %>
-<%= render partial: 'statistics', locals: { hospital: @hospital } %>
+<%= render partial: 'statistics', locals: { hospital_beds: @hospital.hospital_beds } %>
 <%= render partial: 'patients', locals: { patients: @patients } %>
 
 <div class="row mt-5">

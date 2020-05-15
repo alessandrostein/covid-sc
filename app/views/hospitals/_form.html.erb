@@ -48,6 +48,24 @@
           <%=f.error_span(:acronym) %>
         </div>
       </div>
+      <% @hospital_beds.each do |hospital_bed| %>
+          <div class="form-row">
+            <b><%= HospitalBed.human_enum_name(:bed_type, hospital_bed.bed_type) %></b>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <%= fields_for 'hospital_beds[]', hospital_bed do |hf| %>
+                <%= hf.label :total, 'Total' %>
+                <%= hf.text_field :total, class: 'form-control' %>
+            </div>
+            <div class="form-group col-md-6">
+                <%= hf.label :total, 'Total COVID-19' %>
+                <%= hf.text_field :total_covid, class: 'form-control' %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
       <div class="form-row">
         <div class="form-group col">
           <%= f.submit "Atualizar dados", class: 'btn btn-primary' %>

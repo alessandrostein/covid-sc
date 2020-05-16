@@ -23,7 +23,7 @@ RSpec.describe("patients/edit", type: :view) do
     expect(rendered).to(match(/Sisreg/))
     expect(rendered).to(match(/Ventilação/))
     expect(rendered).to(match(/Status/))
-    expect(rendered).to(match(/Data de saída/))
-    expect(rendered).to(match(/Motivo da saída/))
+    expect(rendered).to(match(/Data de Movimentação/))
+    expect(rendered).to(match(/Motivo da Movimentação/))
   end
 end

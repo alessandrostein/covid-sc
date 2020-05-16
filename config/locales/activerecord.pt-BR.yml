@@ -37,7 +37,7 @@ pt-BR:
       patient:
         full_name: Nome completo
         birthday: Data de nacimento
-        departure_date: Data de saída
+        departure_date: Data de Movimentação
         hospitalization_date: Data de Hospitalização
         cns: Carteira do SUS
         waiting_uti: Aguardando UTI
@@ -53,9 +53,10 @@ pt-BR:
           descartado: Descartado
           suspeito: Suspeito
         departure_reason:
-          one: Motivo da saída
+          one: Motivo da Movimentação
           alta: Alta
           obito: Óbito
+          transferencia: Transferência de setor (mudança de tipo de leito)
       patient_bed:
         waiting_uti: Aguardando UTI
         bed_type:

@@ -19,6 +19,7 @@ class PatientsController < ApplicationController
   def edit
     @hospital = current_user.hospital
     @patient = @hospital.patients.find(params[:id])
+    @patient.build_patient_bed if @patient.patient_bed.blank?
   end
 
   def create

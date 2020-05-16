@@ -16,6 +16,7 @@ class Patient < ApplicationRecord
   enum departure_reason: {
     alta: 0,
     obito: 1,
+    transferencia: 2,
   }
   enum status: {
     suspeito: 0,

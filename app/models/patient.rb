@@ -3,8 +3,6 @@ class Patient < ApplicationRecord
   belongs_to :hospital
   has_one :patient_bed
 
-  scope :active, -> { where(departure_reason: nil) }
-
   accepts_nested_attributes_for :patient_bed, allow_destroy: true
 
   enum airways: {
@@ -18,6 +16,7 @@ class Patient < ApplicationRecord
     obito: 1,
     transferencia: 2,
   }
+
   enum status: {
     suspeito: 0,
     confirmado: 1,
@@ -29,6 +28,8 @@ class Patient < ApplicationRecord
   validates :hospitalization_date, presence: true
   validates :cns, length: { is: 15 }
   validates :sisreg, length: { is: 9 }
+
+  scope :active, -> { where(departure_reason: nil) }
 
   def patient_bed_attributes=(attrbutes)
     if attributes['id'].present?

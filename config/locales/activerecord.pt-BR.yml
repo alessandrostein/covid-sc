@@ -20,6 +20,8 @@ pt-BR:
         name: Nome
         city: Cidade
         phone_number: Telefone
+        email: E-mail
+        private: Privado?
       hospital_bed:
         bed_type: Tipo de Leito
         total: Leitos disponíveis

@@ -15,6 +15,14 @@ class Hospital < ApplicationRecord
 
   after_commit -> { create_hospital_beds }, on: :create
 
+  def self.current_id
+    Thread.current[:hospital_id]
+  end
+
+  def self.current_id=(hospital_id)
+    Thread.current[:hospital_id] = hospital_id
+  end
+
   private
 
   def create_hospital_beds

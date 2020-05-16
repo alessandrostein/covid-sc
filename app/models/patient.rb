@@ -3,6 +3,11 @@ class Patient < ApplicationRecord
   belongs_to :hospital
   has_one :patient_bed
 
+  default_scope {where(hospital_id: Hospital.current_id)}
+
+  # Hooks
+  before_save :set_hospital
+
   enum airways: {
     ventilacao_mecanica: 0,
     ar_ambiente: 1,
@@ -24,4 +29,8 @@ class Patient < ApplicationRecord
   validates :hospitalization_date, presence: true
   validates :cns, length: { is: 15 }
   validates :sisreg, length: { is: 9 }
+
+  def set_hospital
+    self.hospital_id = Hospital.current_id
+  end
 end

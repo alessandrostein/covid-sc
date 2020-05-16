@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 class PatientsController < ApplicationController
   def index
-    @hospital = current_user.hospital
-    @patients = @hospital.patients
+    # @hospital = current_user.hospital
+    @patients = Patient.all
   end
 
   def show

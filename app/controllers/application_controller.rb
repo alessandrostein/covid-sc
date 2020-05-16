@@ -4,6 +4,13 @@ class ApplicationController < ActionController::Base
 
   layout :layout_by_resource
 
+  before_action :set_current_hospital
+  
+  def set_current_hospital
+    return unless current_user
+    Hospital.current_id = current_user.hospital_id
+  end
+
   def access_denied(exception)
     redirect_to(root_path, alert: exception.message)
   end

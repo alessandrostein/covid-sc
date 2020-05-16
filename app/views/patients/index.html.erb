@@ -6,3 +6,9 @@
 </div>
 
 <%= render partial: 'patients', locals: { patients: @patients } %>
+
+<div class="row">
+  <div class="col">
+    <%= will_paginate @patients, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  </div>
+</div>

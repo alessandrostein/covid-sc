@@ -2,7 +2,7 @@
 class PatientsController < ApplicationController
   def index
     @hospital = current_user.hospital
-    @patients = @hospital.patients
+    @patients = @hospital.patients.paginate(page: params[:page], per_page: 10)
   end
 
   def show

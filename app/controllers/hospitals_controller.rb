@@ -14,6 +14,7 @@ class HospitalsController < ApplicationController
     update_hospital_beds
 
     @hospital = current_user.hospital
+    @hospital_beds = @hospital.hospital_beds
 
     if @hospital.update(hospital_params)
       redirect_to(@hospital, notice: 'Hospital was successfully updated.')

@@ -3,13 +3,18 @@ pt-BR:
   "false": Não
   activerecord:
     models:
-      patient: Paciente
+      patient:
+        one: Paciente
+        other: Pacientes
       user:
         one: Usuário
         other: Usuários
       hospital:
         one: Hospital
         other: Hospitais
+      patient_bed:
+        one: Leito
+        others: Leitos
     attributes:
       user:
         role: Tipo de usuário
@@ -61,6 +66,7 @@ pt-BR:
           transferencia: Transferência de setor (mudança de tipo de leito)
       patient_bed:
         waiting_uti: Aguardando UTI
+        admition_date: Data de Hospitalização
         bed_type:
           one: Tipo de Leito
           uti_adulto: UTI Adulto

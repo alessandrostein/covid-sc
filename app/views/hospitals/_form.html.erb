@@ -29,6 +29,7 @@
           <%=f.error_span(:city) %>
         </div>
       </div>
+
       <div class="form-row">
         <div class="form-group col-md-6">
           <%= f.label :phone_number, "Telefone" %>
@@ -41,6 +42,7 @@
           <%=f.error_span(:email) %>
         </div>
       </div>
+
       <div class="form-row">
         <div class="form-group col-md-6">
           <%= f.label :acronym, "Acrônimo" %>
@@ -48,10 +50,14 @@
           <%=f.error_span(:acronym) %>
         </div>
       </div>
+
       <% @hospital_beds.each do |hospital_bed| %>
-          <div class="form-row">
-            <b><%= HospitalBed.human_enum_name(:bed_type, hospital_bed.bed_type) %></b>
+          <div class="row">
+            <div class="col">
+              <b><%= HospitalBed.human_enum_name(:bed_type, hospital_bed.bed_type) %></b>
+            </div>
           </div>
+
           <div class="form-row">
             <div class="form-group col-md-6">
               <%= fields_for 'hospital_beds[]', hospital_bed do |hf| %>

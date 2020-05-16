@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   resource :report, only: %i[create]
 
-  resource :hospital, only: %i[show edit update] do
-    resources :patients, except: %i[destroy]
-  end
+  resource :hospital, only: %i[show edit update]
+  resources :patients, except: %i[destroy]
 end

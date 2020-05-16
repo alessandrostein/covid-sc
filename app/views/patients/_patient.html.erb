@@ -11,6 +11,6 @@
   <td> <%= PatientBed.human_enum_name(:bed_type, patient.patient_bed.bed_type) if patient.patient_bed %> </td>
   <td> <%= t(patient.patient_bed.waiting_uti) if patient.patient_bed %> </td>
   <td>
-    <%= link_to "Editar", edit_hospital_patient_path(patient), class:"btn btn-primary" %>
+    <%= link_to "Editar", edit_patient_path(patient), class:"btn btn-primary" %>
   </td>
 </tr>

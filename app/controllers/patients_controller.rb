@@ -32,7 +32,7 @@ class PatientsController < ApplicationController
     )
 
     if @patient.save
-      redirect_to(hospital_patient_url(@patient), notice: 'Patient was successfully created.')
+      redirect_to(patient_url(@patient), notice: 'Patient was successfully created.')
     else
       render(:new)
     end
@@ -43,7 +43,7 @@ class PatientsController < ApplicationController
     @patient = @hospital.patients.find(params[:id])
 
     if @patient.update(patient_params)
-      redirect_to(hospital_patient_url(@patient), notice: 'Patient was successfully updated.')
+      redirect_to(patient_url(@patient), notice: 'Patient was successfully updated.')
     else
       render(:edit)
     end

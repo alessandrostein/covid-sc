@@ -15,7 +15,7 @@ RSpec.describe("patients/new", type: :view) do
     expect(rendered).to(match(/Nome completo/))
     expect(rendered).to(match(/Data de nacimento/))
     expect(rendered).to(match(/Data de Hospitalização/))
-    expect(rendered).to(match(/Carteira Nacional do SUS/))
+    expect(rendered).to(match(/Carteira do SUS/))
     expect(rendered).to(match(/Sisreg/))
     expect(rendered).to(match(/Ventilação/))
     expect(rendered).to(match(/Status/))

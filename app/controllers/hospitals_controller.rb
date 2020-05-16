@@ -2,7 +2,7 @@
 class HospitalsController < ApplicationController
   def show
     @hospital = current_user.hospital
-    @patients = @hospital.patients.limit(10)
+    @patients = @hospital.patients.active.limit(10)
   end
 
   def edit

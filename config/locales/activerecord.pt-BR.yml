@@ -1,13 +1,15 @@
 pt-BR:
+  "true": Sim
+  "false": Não
   activerecord:
     models:
       patient: Paciente
-      user: 
+      user:
         one: Usuário
         other: Usuários
       hospital:
         one: Hospital
-        other: Hospitais      
+        other: Hospitais
     attributes:
       user:
         role: Tipo de usuário
@@ -37,7 +39,8 @@ pt-BR:
         birthday: Data de nacimento
         departure_date: Data de saída
         hospitalization_date: Data de Hospitalização
-        cns: Carteira Nacional do SUS
+        cns: Carteira do SUS
+        waiting_uti: Aguardando UTI
         sisreg: Sisreg
         airways:
           one: Ventilação
@@ -54,4 +57,13 @@ pt-BR:
           alta: Alta
           obito: Óbito
       patient_bed:
-        bed_types:
+        waiting_uti: Aguardando UTI
+        bed_type:
+          one: Tipo de Leito
+          uti_adulto: UTI Adulto
+          uti_pediatrica: UTI Pediátrica
+          uti_neonatal: UTI Neonatal
+          clinico_adulto: Clínico Adulto
+          clinico_pediatrico: Clínico Pediátrico
+          clinico_neonatal: Clínico Neonatal
+          leito_simples_com_ventilador_mecanico: Simples Ventilador Mecânico

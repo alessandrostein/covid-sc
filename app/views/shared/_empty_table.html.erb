@@ -1,0 +1,9 @@
+<% message = "Nenhuma entidade encontrada." if local_assigns[:message].nil? %>
+
+<tr class="table-light">
+  <td colspan="<%= colspan %>">
+    <div class="alert alert-primary text-center" role="alert">
+      <%= message %>
+    </div>
+  </td>
+</tr>

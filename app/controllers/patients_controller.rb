@@ -13,6 +13,7 @@ class PatientsController < ApplicationController
   def new
     @hospital = current_user.hospital
     @patient = @hospital.patients.new
+    @patient.build_patient_bed
   end
 
   def edit
@@ -22,7 +23,13 @@ class PatientsController < ApplicationController
 
   def create
     @hospital = current_user.hospital
-    @patient = @hospital.patients.new(patient_params)
+    @patient = @hospital.patients.new(
+      patient_params.merge(
+        patient_bed_attributes: {
+          admission_date: patient_params[:hospitalization_date],
+        }
+      )
+    )
 
     if @patient.save
       redirect_to(hospital_patient_url(@patient), notice: 'Patient was successfully created.')
@@ -63,6 +70,7 @@ class PatientsController < ApplicationController
       :status,
       :departure_date,
       :departure_reason,
+      patient_bed_attributes: [:id, :patient_id, :waiting_uti, :bed_type]
     ).merge(hospital: @hospital)
   end
 end

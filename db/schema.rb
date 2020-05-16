@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_181509) do
+ActiveRecord::Schema.define(version: 2020_05_15_202156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2020_05_13_181509) do
     t.datetime "departure_date"
     t.string "cns", default: "", null: false
     t.string "sisreg", default: "", null: false
-    t.integer "departure_reason", default: 0, null: false
+    t.integer "departure_reason", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["hospital_id"], name: "index_patients_on_hospital_id"

@@ -3,6 +3,7 @@ class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
   def self.human_enum_name(enum_name, enum_value)
+    return unless enum_value.present?
     I18n.t("activerecord.attributes.#{model_name.i18n_key}.#{enum_name}.#{enum_value}")
   end
 

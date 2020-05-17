@@ -14,6 +14,8 @@ gem 'rails-i18n', '~> 6.0.0'
 gem 'sass-rails', '>= 6'
 gem 'twitter-bootstrap-rails'
 gem 'webpacker', '~> 4.0'
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap4'
 
 gem 'activeadmin'
 gem 'bootsnap', '>= 1.4.2', require: false

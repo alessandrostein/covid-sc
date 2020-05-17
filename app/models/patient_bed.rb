@@ -6,4 +6,5 @@ class PatientBed < ApplicationRecord
 
   validates :admission_date, presence: true
   validates :waiting_uti, inclusion: { in: [true, false] }
+  validates :bed_type, presence: true
 end

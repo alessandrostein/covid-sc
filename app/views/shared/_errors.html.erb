@@ -1,0 +1,5 @@
+<% if object.errors.any? %>
+  <div id="error_expl" class=" alert alert-danger" role="alert">
+    <%= pluralize(object.errors.count, "erro encontrado", "erros encontrados") %>. Corrija em cada campo destacado!
+  </div>
+<% end %>

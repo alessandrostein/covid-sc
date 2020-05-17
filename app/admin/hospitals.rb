@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 ActiveAdmin.register(Hospital) do
   permit_params :acronym,
-                :name,
                 :city,
-                :phone_number,
                 :email,
+                :private,
+                :name,
+                :phone_number,
                 hospital_beds_attributes: %I[id bed_type total total_covid]
 
   index do
@@ -15,6 +16,7 @@ ActiveAdmin.register(Hospital) do
     column :city
     column :phone_number
     column :email
+    column :private
     actions
   end
 
@@ -25,6 +27,7 @@ ActiveAdmin.register(Hospital) do
       row :city
       row :phone_number
       row :email
+      row :private
       row :created_at
       row :updated_at
     end
@@ -45,6 +48,7 @@ ActiveAdmin.register(Hospital) do
       f.input(:city)
       f.input(:phone_number)
       f.input(:email)
+      f.input(:private)
     end
 
     f.inputs('Capicidade Instalada') do

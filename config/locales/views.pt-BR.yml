@@ -4,6 +4,9 @@ pt-BR:
       back: Voltar
       edit: Editar
       destroy: Apagar
+  will_paginate:
+    previous_label: Anterior
+    next_label: Próximo
   views:
     patients:
       new:

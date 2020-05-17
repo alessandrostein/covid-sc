@@ -1,9 +1,38 @@
-<%= render partial: 'info', locals: { hospital: @hospital } %>
-<%= render partial: 'statistics', locals: { hospital: @hospital } %>
-<%= render partial: 'patients', locals: { patients: @patients } %>
-
-<div class="row mt-5">
+<div class="row mb-4">
   <div class="col">
-    <%= link_to "ENVIAR RELATÓRIO", "#", class: 'btn btn-lg btn-primary float-right' %>
+    <h1 class="float-left">Dados Gerais (<%= @hospital.acronym %>)</h1>
+    <%= link_to "editar dados do hospital", edit_hospital_path, class:"btn btn-outline-primary float-right" %>
+  </div>
+</div>
+
+<%= render partial: 'info', locals: { hospital: @hospital } %>
+
+<div class="row mb-4 mt-4">
+  <div class="col">
+    <h1 class="float-left">Ocupação de Leitos</h1>
+    <%= link_to "editar dados de ocupação", edit_hospital_path, class:"btn btn-outline-primary float-right" %>
+  </div>
+</div>
+
+<%= render partial: 'statistics', locals: { hospital_beds: @hospital.hospital_beds } %>
+
+<div class="row mb-4 mt-4">
+  <div class="col">
+    <h1 class="float-left">Pacientes</h1>
+    <%= link_to "atualizar dados dos pacientes", patients_path, class:"btn btn-outline-primary float-right" %>
+  </div>
+</div>
+
+<%= render partial: 'patients/patients', locals: { patients: @patients } %>
+
+<div class="row">
+  <div class="col">
+    <%= will_paginate @patients, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <%= link_to "Enviar Relatório", "#", class: 'btn btn-primary float-right' %>
   </div>
 </div>

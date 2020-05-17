@@ -17,6 +17,7 @@ RSpec.describe(PatientBed, type: :model) do
 
     describe('bed_type') do
       it { is_expected.to(allow_value(:uti_adulto).for(:bed_type)) }
+      it { is_expected.to(validate_presence_of(:bed_type)) }
     end
 
     describe('waiting_uti') do

@@ -1,8 +1,8 @@
-<div class="row">
+<div class="row mb-4">
   <div class="col">
     <h1 class="float-left">Editar Dados Gerais do Hospital</h1>
-    <%= link_to "voltar", hospital_path(@hospital), class: "btn btn-primary float-right" %>
+    <%= link_to "voltar", hospital_path, class: "btn btn-outline-primary float-right" %>
   </div>
 </div>
 
-<%= render :partial => 'form' %>
+<%= render partial: 'form' %>

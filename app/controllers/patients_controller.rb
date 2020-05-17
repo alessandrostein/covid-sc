@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 class PatientsController < ApplicationController
   def index
+    @patients = Patient.paginate(page: params[:page], per_page: 10)
     # @hospital = current_user.hospital
-    @patients = Patient.all
+    # @patients = @hospital.patients.paginate(page: params[:page], per_page: 10)
   end
 
   def show
@@ -13,19 +14,27 @@ class PatientsController < ApplicationController
   def new
     @hospital = current_user.hospital
     @patient = @hospital.patients.new
+    @patient.build_patient_bed
   end
 
   def edit
     @hospital = current_user.hospital
     @patient = @hospital.patients.find(params[:id])
+    @patient.build_patient_bed if @patient.patient_bed.blank?
   end
 
   def create
     @hospital = current_user.hospital
-    @patient = @hospital.patients.new(patient_params)
+    @patient = @hospital.patients.new(
+      patient_params.merge(
+        patient_bed_attributes: {
+          admission_date: patient_params[:hospitalization_date],
+        }
+      )
+    )
 
     if @patient.save
-      redirect_to(hospital_patient_url(@patient), notice: 'Patient was successfully created.')
+      redirect_to(patient_url(@patient), notice: 'Patient was successfully created.')
     else
       render(:new)
     end
@@ -36,7 +45,7 @@ class PatientsController < ApplicationController
     @patient = @hospital.patients.find(params[:id])
 
     if @patient.update(patient_params)
-      redirect_to(hospital_patient_url(@patient), notice: 'Patient was successfully updated.')
+      redirect_to(patient_url(@patient), notice: 'Patient was successfully updated.')
     else
       render(:edit)
     end
@@ -63,6 +72,7 @@ class PatientsController < ApplicationController
       :status,
       :departure_date,
       :departure_reason,
+      patient_bed_attributes: [:id, :patient_id, :waiting_uti, :bed_type]
     ).merge(hospital: @hospital)
   end
 end

@@ -2,56 +2,75 @@
   <div class="col">
     <%= form_for @hospital, html: { class: "form-horizontal hospital" } do |f| %>
 
-      <% if @hospital.errors.any? %>
-        <div id="error_expl" class="panel panel-danger">
-          <div class="panel-heading">
-            <h3 class="panel-title"><%= pluralize(@hospital.errors.count, "error") %> prohibited this hospital from being saved:</h3>
-          </div>
-          <div class="panel-body">
-            <ul>
-            <% @hospital.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-            </ul>
-          </div>
-        </div>
-      <% end %>
+      <%= render partial: 'shared/errors', object: @hospital, as: :object %>
 
       <div class="form-row">
         <div class="form-group col-md-6">
           <%= f.label :name, "Nome" %>
           <%= f.text_field :name, class: 'form-control' %>
-          <%=f.error_span(:name) %>
+          <%= f.error_span(:name) %>
         </div>
         <div class="form-group col-md-6">
           <%= f.label :city, "Cidade" %>
           <%= f.text_field :city, class: 'form-control' %>
-          <%=f.error_span(:city) %>
+          <%= f.error_span(:city) %>
         </div>
       </div>
+
       <div class="form-row">
         <div class="form-group col-md-6">
           <%= f.label :phone_number, "Telefone" %>
           <%= f.text_field :phone_number, class: 'form-control' %>
-          <%=f.error_span(:phone_number) %>
+          <%= f.error_span(:phone_number) %>
         </div>
         <div class="form-group col-md-6">
           <%= f.label :email, "E-mail" %>
           <%= f.text_field :email, class: 'form-control' %>
-          <%=f.error_span(:email) %>
+          <%= f.error_span(:email) %>
         </div>
       </div>
+
       <div class="form-row">
         <div class="form-group col-md-6">
           <%= f.label :acronym, "Acrônimo" %>
           <%= f.text_field :acronym, class: 'form-control' %>
-          <%=f.error_span(:acronym) %>
+          <%= f.error_span(:acronym) %>
+        </div>
+
+        <div class="form-group col-md-6 pt-3">
+          <div class="form-check pt-4">
+            <%= f.check_box :private, class: 'form-check-label' %>
+            <%= f.label :private, 'hospital privado?', class: 'control-label' %>
+            <%= f.error_span(:private) %>
+          </div>
         </div>
       </div>
+
+      <% @hospital_beds.each do |hospital_bed| %>
+          <div class="row">
+            <div class="col">
+              <b><%= HospitalBed.human_enum_name(:bed_type, hospital_bed.bed_type) %></b>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <%= fields_for 'hospital_beds[]', hospital_bed do |hf| %>
+                <%= hf.label :total, 'Total' %>
+                <%= hf.text_field :total, class: 'form-control' %>
+            </div>
+            <div class="form-group col-md-6">
+                <%= hf.label :total, 'Total COVID-19' %>
+                <%= hf.text_field :total_covid, class: 'form-control' %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
       <div class="form-row">
         <div class="form-group col">
           <%= f.submit "Atualizar dados", class: 'btn btn-primary' %>
-          <%= link_to "Voltar", hospital_path, class: 'btn btn-default' %>
+          <%= link_to "voltar", hospital_path, class: "btn btn-outline-primary" %>
         </div>
       </div>
     <% end %>

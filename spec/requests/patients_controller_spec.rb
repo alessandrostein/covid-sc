@@ -10,7 +10,7 @@ RSpec.describe(PatientsController, type: :request) do
 
   describe 'GET #new' do
     it 'returns http success' do
-      get new_hospital_patient_path
+      get new_patient_path
       expect(response).to(have_http_status(:success))
     end
   end
@@ -19,7 +19,7 @@ RSpec.describe(PatientsController, type: :request) do
     let(:patient) { create(:patient, hospital: user.hospital) }
 
     it 'returns http success' do
-      get hospital_patient_path(patient)
+      get patient_path(patient)
       expect(response).to(have_http_status(:success))
     end
   end
@@ -28,7 +28,7 @@ RSpec.describe(PatientsController, type: :request) do
     let(:patient) { create(:patient, hospital: user.hospital) }
 
     it 'returns http success' do
-      get edit_hospital_patient_path(patient)
+      get edit_patient_path(patient)
       expect(response).to(have_http_status(:success))
     end
   end
@@ -37,7 +37,7 @@ RSpec.describe(PatientsController, type: :request) do
     let(:patient) { build(:patient, hospital: user.hospital) }
 
     it 'returns http redirect' do
-      post hospital_patients_path, params: {
+      post patients_path, params: {
         patient: {
           full_name: patient.full_name,
           birthday: patient.birthday,
@@ -56,7 +56,7 @@ RSpec.describe(PatientsController, type: :request) do
     end
 
     it 'returns http success with invalid data' do
-      post hospital_patients_path, params: {
+      post patients_path, params: {
         patient: {
           full_name: patient.full_name,
         },
@@ -71,7 +71,7 @@ RSpec.describe(PatientsController, type: :request) do
     let(:patient) { create(:patient, hospital: user.hospital) }
 
     it 'returns http redirect' do
-      patch hospital_patient_path(patient), params: {
+      patch patient_path(patient), params: {
         patient: {
           full_name: patient.full_name,
           birthday: patient.birthday,
@@ -89,7 +89,7 @@ RSpec.describe(PatientsController, type: :request) do
     end
 
     it 'returns http success with invalid data' do
-      patch hospital_patient_path(patient), params: {
+      patch patient_path(patient), params: {
         patient: {
           full_name: '',
         },

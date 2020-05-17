@@ -1,13 +1,20 @@
 pt-BR:
+  "true": Sim
+  "false": Não
   activerecord:
     models:
-      patient: Paciente
-      user: 
+      patient:
+        one: Paciente
+        other: Pacientes
+      user:
         one: Usuário
         other: Usuários
       hospital:
         one: Hospital
-        other: Hospitais      
+        other: Hospitais
+      patient_bed:
+        one: Leito
+        others: Leitos
     attributes:
       user:
         role: Tipo de usuário
@@ -18,6 +25,8 @@ pt-BR:
         name: Nome
         city: Cidade
         phone_number: Telefone
+        email: E-mail
+        private: Privado?
       hospital_bed:
         bed_type: Tipo de Leito
         total: Leitos disponíveis
@@ -35,9 +44,10 @@ pt-BR:
       patient:
         full_name: Nome completo
         birthday: Data de nacimento
-        departure_date: Data de saída
+        departure_date: Data de Movimentação
         hospitalization_date: Data de Hospitalização
-        cns: Carteira Nacional do SUS
+        cns: Carteira do SUS
+        waiting_uti: Aguardando UTI
         sisreg: Sisreg
         airways:
           one: Ventilação
@@ -50,8 +60,19 @@ pt-BR:
           descartado: Descartado
           suspeito: Suspeito
         departure_reason:
-          one: Motivo da saída
+          one: Motivo da Movimentação
           alta: Alta
           obito: Óbito
+          transferencia: Transferência de setor (mudança de tipo de leito)
       patient_bed:
-        bed_types:
+        waiting_uti: Aguardando UTI
+        admition_date: Data de Hospitalização
+        bed_type:
+          one: Tipo de Leito
+          uti_adulto: UTI Adulto
+          uti_pediatrica: UTI Pediátrica
+          uti_neonatal: UTI Neonatal
+          clinico_adulto: Clínico Adulto
+          clinico_pediatrico: Clínico Pediátrico
+          clinico_neonatal: Clínico Neonatal
+          leito_simples_com_ventilador_mecanico: Simples Ventilador Mecânico

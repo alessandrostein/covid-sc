@@ -3,10 +3,13 @@ class Patient < ApplicationRecord
   belongs_to :hospital
   has_one :patient_bed
 
+  # Scopeds
   default_scope {where(hospital_id: Hospital.current_id)}
+  scope :active, -> { where(departure_reason: nil) }
 
   # Hooks
   before_save :set_hospital
+  accepts_nested_attributes_for :patient_bed, allow_destroy: true
 
   enum airways: {
     ventilacao_mecanica: 0,
@@ -17,7 +20,9 @@ class Patient < ApplicationRecord
   enum departure_reason: {
     alta: 0,
     obito: 1,
+    transferencia: 2,
   }
+
   enum status: {
     suspeito: 0,
     confirmado: 1,
@@ -31,6 +36,14 @@ class Patient < ApplicationRecord
   validates :sisreg, length: { is: 9 }
 
   def set_hospital
+    return if Hospital.current_id.blank?
     self.hospital_id = Hospital.current_id
+  end
+
+  def patient_bed_attributes=(attrbutes)
+    if attributes['id'].present?
+      self.patient_bed = PatientBed.find(attributes['id'])
+    end
+    super
   end
 end

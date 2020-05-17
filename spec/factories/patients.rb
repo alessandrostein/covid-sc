@@ -3,7 +3,7 @@ FactoryBot.define do
   factory :patient do
     hospital
     airways { Patient.airways.keys.sample }
-    departure_reason { Patient.departure_reasons.keys.sample }
+    departure_reason { nil }
     status { Patient.statuses.keys.sample }
     cns { Faker::Number.number(digits: 15) }
     sisreg { Faker::Number.number(digits: 9) }

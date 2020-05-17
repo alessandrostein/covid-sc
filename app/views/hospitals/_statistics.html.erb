@@ -1,74 +1,17 @@
-
 <div class="row">
   <div class="col">
-    <h1 class="float-left">Ocupação de Leitos</h1>
-    <%= link_to "atualizar dados de ocupação", edit_hospital_path(@hospital), class:"btn btn-outline-primary float-right mt-2" %>
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    <form>
-      <div class="form-group">
-        <div class="row mb-3">
+    <div class="form-group">
+      <div class="row mb-3">
+        <% hospital_beds.each do |hospital_bed| %>
           <div class="col-3">
-            <label for="hospital">UTI Adulto</label>
-            <input type="text" class="form-control" id="hospital" value="TODO" aria-describedby="hospital" readonly>
+            <label><%= HospitalBed.human_enum_name(:bed_type, hospital_bed.bed_type) %></label>
+            <input type="text" class="form-control" id="hospital" value="<%= hospital_bed.total %>" aria-describedby="hospital" readonly>
             <span class="text-muted">
-              dos quais XX são de COVID-19
+              dos quais <%= hospital_bed.total_covid %> são de COVID-19
             </span>
           </div>
-
-          <div class="col-3">
-            <label for="city">UTI Pediátrica</label>
-            <input type="text" class="form-control" id="city" value="TODO" aria-describedby="city" readonly>
-            <span class="text-muted">
-              dos quais XX são de COVID-19
-            </span>
-          </div>
-
-          <div class="col-3">
-            <label for="phone_number">UTI Neonatal</label>
-            <input type="text" class="form-control" id="phone_number" aria-describedby="phone_number" value="TODO" readonly>
-            <span class="text-muted">
-              dos quais XX são de COVID-19
-            </span>
-          </div>
-
-          <div class="col-3">
-            <label for="email">Clínico Adulto</label>
-            <input type="email" class="form-control" id="email" aria-describedby="email" value="TODO" readonly>
-            <span class="text-muted">
-              dos quais XX são de COVID-19
-            </span>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-3">
-            <label for="email">Clínito Pediátrico</label>
-            <input type="email" class="form-control" id="email" aria-describedby="email" value="TODO" readonly>
-            <span class="text-muted">
-              dos quais XX são de COVID-19
-            </span>
-          </div>
-
-          <div class="col-3">
-            <label for="email">Clínico Neonatal</label>
-            <input type="email" class="form-control" id="email" aria-describedby="email" value="TODO" readonly>
-            <span class="text-muted">
-              dos quais XX são de COVID-19
-            </span>
-          </div>
-
-          <div class="col-3">
-            <label for="email">Leito com VM</label>
-            <input type="email" class="form-control" id="email" aria-describedby="email" value="TODO" readonly>
-            <span class="text-muted">
-              dos quais XX são de COVID-19
-            </span>
-          </div>
-        </div>
+        <% end %>
       </div>
-    </form>
+    </div>
   </div>
 </div>

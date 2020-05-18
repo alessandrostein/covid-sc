@@ -27,9 +27,8 @@ RSpec.describe(PatientBed, type: :model) do
     end
 
     describe('admission_date') do
-      before { subject.valid? }
-
       it 'defaults to the current time' do
+        expect(subject).to be_valid
         expect(subject.admission_date.to_date).to(eq(Date.today))
       end
     end

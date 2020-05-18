@@ -6,46 +6,46 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col">
-		<form>
-			<div class="form-group">
-				<div class="row">
-					<div class="col-form-label col-md-6">
-						<label for="full_name">Nome completo</label>
-						<input type="text" class="form-control" id="full_name" value="<%= @patient.full_name %>" aria-describedby="full_name" readonly>
-					</div>
-					<div class="col-form-label col-md-6">
-						<label for="birthday">Data de Nascimento</label>
-						<input type="text" class="form-control" id="birthday" value="<%= l(@patient.birthday, default: 'Não informado') %>" aria-describedby="birthday" readonly>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-form-label col-md-4">
-						<label for="hospitalization_date">Data de Hospitalização</label>
-						<input type="text" class="form-control" id="hospitalization_date" aria-describedby="hospitalization_date" value="<%= l(@patient.hospitalization_date, format: :long, default: 'Não informado') %>" readonly>
-					</div>
-					<div class="col-form-label col-md-4">
-						<label for="cns">Carteira do SUS</label>
-						<input type="text" class="form-control" id="cns" aria-describedby="cns" value="<%= @patient.cns %>" readonly>
-					</div>
-					<div class="col-form-label col-md-4">
-						<label for="sisreg">Sisreg</label>
-						<input type="text" class="form-control" id="sisreg" aria-describedby="sisreg" value="<%= @patient.sisreg %>" readonly>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-form-label col-md-6">
-						<label for="status">Status</label>
-						<input type="text" class="form-control" id="status" aria-describedby="status" value="<%= Patient.human_enum_name(:status, @patient.status) %>" readonly>
-					</div>
-					<div class="col-form-label col-md-6">
-						<label for="airways">Ventilação</label>
-						<input type="text" class="form-control" id="airways" aria-describedby="airways" value="<%= Patient.human_enum_name(:airways, @patient.airways) %>" readonly>
-					</div>
-				</div>
-			</div>
-		</form>
-	</div>
+  <div class="col">
+    <form>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-form-label col-md-6">
+            <label for="full_name">Nome completo</label>
+            <input type="text" class="form-control" id="full_name" value="<%= @patient.full_name %>" aria-describedby="full_name" readonly>
+          </div>
+          <div class="col-form-label col-md-6">
+            <label for="birthday">Data de Nascimento</label>
+            <input type="text" class="form-control" id="birthday" value="<%= l(@patient.birthday, default: 'Não informado') %>" aria-describedby="birthday" readonly>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-form-label col-md-4">
+            <label for="hospitalization_date">Data de Hospitalização</label>
+            <input type="text" class="form-control" id="hospitalization_date" aria-describedby="hospitalization_date" value="<%= l(@patient.hospitalization_date, format: :long, default: 'Não informado') %>" readonly>
+          </div>
+          <div class="col-form-label col-md-4">
+            <label for="cns">Carteira do SUS</label>
+            <input type="text" class="form-control" id="cns" aria-describedby="cns" value="<%= @patient.cns %>" readonly>
+          </div>
+          <div class="col-form-label col-md-4">
+            <label for="sisreg">Sisreg</label>
+            <input type="text" class="form-control" id="sisreg" aria-describedby="sisreg" value="<%= @patient.sisreg %>" readonly>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-form-label col-md-6">
+            <label for="status">Status</label>
+            <input type="text" class="form-control" id="status" aria-describedby="status" value="<%= Patient.human_enum_name(:status, @patient.status) %>" readonly>
+          </div>
+          <div class="col-form-label col-md-6">
+            <label for="airways">Ventilação</label>
+            <input type="text" class="form-control" id="airways" aria-describedby="airways" value="<%= Patient.human_enum_name(:airways, @patient.airways) %>" readonly>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 <div class="row mb-4 mt-4">
 	<div class="col">

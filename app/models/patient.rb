@@ -32,7 +32,7 @@ class Patient < ApplicationRecord
   scope :active, -> { where(departure_reason: nil) }
 
   def patient_bed_attributes=(attributes)
-      self.patient_bed = PatientBed.find(attributes['id']) if attributes['id'].present?
+    self.patient_bed = PatientBed.find(attributes['id']) if attributes['id'].present?
 
     super
   end

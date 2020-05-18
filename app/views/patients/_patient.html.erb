@@ -1,18 +1,18 @@
 <tr>
-	<td scope="row">
-		<%= link_to patient.full_name, patient_path(patient) %>
-	</td>
-	<td> <%= patient.birthday ? l(patient.birthday.to_date) : 'Não Informado' %></td>
-	<td> <%= patient.hospitalization_date ? l(patient.hospitalization_date.to_date) : 'Não Informado' %> </td>
-	<td> <%= Patient.human_enum_name(:airways, patient.airways) %> </td>
-	<td> <%= Patient.human_enum_name(:status, patient.status) %> </td>
-	<td> <%= patient.cns %> </td>
-	<td> <%= patient.sisreg %> </td>
-	<td> <%= patient.departure_date ? l(patient.departure_date.to_date) : 'Não Informado' %> </td>
-	<td> <%= Patient.human_enum_name(:departure_reason, patient.departure_reason) %> </td>
-	<td> <%= PatientBed.human_enum_name(:bed_type, patient.patient_bed.bed_type) if patient.patient_bed %> </td>
-	<td> <%= t(patient.patient_bed.waiting_uti) if patient.patient_bed %> </td>
-	<td>
-		<%= link_to "Editar", edit_patient_path(patient), class:"btn btn-primary" %>
-	</td>
+  <td scope="row">
+    <%= link_to patient.full_name, patient_path(patient) %>
+  </td>
+  <td> <%= patient.birthday ? l(patient.birthday.to_date) : 'Não Informado' %></td>
+  <td> <%= patient.hospitalization_date ? l(patient.hospitalization_date.to_date) : 'Não Informado' %> </td>
+  <td> <%= Patient.human_enum_name(:airways, patient.airways) %> </td>
+  <td> <%= Patient.human_enum_name(:status, patient.status) %> </td>
+  <td> <%= patient.cns %> </td>
+  <td> <%= patient.sisreg %> </td>
+  <td> <%= patient.departure_date ? l(patient.departure_date.to_date) : 'Não Informado' %> </td>
+  <td> <%= Patient.human_enum_name(:departure_reason, patient.departure_reason) %> </td>
+  <td> <%= PatientBed.human_enum_name(:bed_type, patient.patient_bed.bed_type) if patient.patient_bed %> </td>
+  <td> <%= t(patient.patient_bed.waiting_uti) if patient.patient_bed %> </td>
+  <td>
+    <%= link_to "Editar", edit_patient_path(patient), class:"btn btn-primary" %>
+  </td>
 </tr>

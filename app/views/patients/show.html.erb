@@ -53,22 +53,22 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col">
-		<form>
-			<div class="form-group">
-				<div class="row">
-					<div class="col-form-label col-md-6">
-						<label for="bed_type">Tipo de Cama</label>
-						<input type="text" class="form-control" id="bed_type" aria-describedby="bed_type" value="<%= PatientBed.human_enum_name(:bed_type, @patient.patient_bed&.bed_type) || 'Não informado' %>" readonly>
-					</div>
-					<div class="col-form-label col-md-6">
-						<label for="waiting_uti">Aguardando UTI?</label>
-						<input type="text" class="form-control" id="waiting_uti" aria-describedby="waiting_uti" value="<%= @patient.patient_bed ? @patient.patient_bed.waiting_uti ? 'Sim' : 'Não' : 'Não informado' %>" readonly>
-					</div>
-				</div>
-			</div>
-		</form>
-	</div>
+  <div class="col">
+    <form>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-form-label col-md-6">
+            <label for="bed_type">Tipo de Cama</label>
+            <input type="text" class="form-control" id="bed_type" aria-describedby="bed_type" value="<%= PatientBed.human_enum_name(:bed_type, @patient.patient_bed&.bed_type) || 'Não informado' %>" readonly>
+          </div>
+          <div class="col-form-label col-md-6">
+            <label for="waiting_uti">Aguardando UTI?</label>
+            <input type="text" class="form-control" id="waiting_uti" aria-describedby="waiting_uti" value="<%= @patient.patient_bed ? @patient.patient_bed.waiting_uti ? 'Sim' : 'Não' : 'Não informado' %>" readonly>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 <div class="row mb-4 mt-4">
   <div class="col">

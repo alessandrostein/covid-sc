@@ -1,32 +1,95 @@
-<%- model_class = Patient -%>
-<div class="page-header">
-  <h1><%=t '.title', default: model_class.model_name.human.titleize %></h1>
+<div class="row mb-4">
+	<div class="col">
+		<h1 class="float-left">Paciente (<%= @patient.full_name %>)</h1>
+		<%= link_to "voltar", patients_path, class: "btn btn-outline-primary float-right ml-2" %>
+		<%= link_to "editar paciente", edit_patient_path(@patient), class:"btn btn-primary float-right" %>
+	</div>
 </div>
-
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:full_name) %>:</strong></dt>
-  <dd><%= @patient.full_name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:birthday) %>:</strong></dt>
-  <dd><%= l(@patient.birthday, default: 'Não informado') %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:airways) %>:</strong></dt>
-  <dd><%= Patient.human_enum_name(:airways, @patient.airways) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
-  <dd><%= @patient.status %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:hospitalization_date) %>:</strong></dt>
-  <dd><%= l(@patient.hospitalization_date, default: 'Não informado') %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:departure_date) %>:</strong></dt>
-  <dd><%= l(@patient.departure_date, default: 'Não informado') %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:cns) %>:</strong></dt>
-  <dd><%= @patient.cns %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sisreg) %>:</strong></dt>
-  <dd><%= @patient.sisreg %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:departure_reason) %>:</strong></dt>
-  <dd><%= @patient.departure_reason %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:waiting_uti) %>:</strong></dt>
-  <dd><%= t(@patient.patient_bed.waiting_uti.to_s) if @patient.patient_bed.present? %></dd>
-</dl>
-
-<%= link_to t('.back', default: t("helpers.links.back")),
-              patients_path, class: 'btn btn-default'  %>
-<%= link_to t('.edit', default: t("helpers.links.edit")),
-              edit_patient_path(@patient), class: 'btn btn-default' %>
+<div class="row">
+	<div class="col">
+		<form>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-form-label col-md-6">
+						<label for="full_name">Nome completo</label>
+						<input type="text" class="form-control" id="full_name" value="<%= @patient.full_name %>" aria-describedby="full_name" readonly>
+					</div>
+					<div class="col-form-label col-md-6">
+						<label for="birthday">Data de Nascimento</label>
+						<input type="text" class="form-control" id="birthday" value="<%= l(@patient.birthday, default: 'Não informado') %>" aria-describedby="birthday" readonly>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-form-label col-md-4">
+						<label for="hospitalization_date">Data de Hospitalização</label>
+						<input type="text" class="form-control" id="hospitalization_date" aria-describedby="hospitalization_date" value="<%= l(@patient.hospitalization_date, format: :long, default: 'Não informado') %>" readonly>
+					</div>
+					<div class="col-form-label col-md-4">
+						<label for="cns">Carteira do SUS</label>
+						<input type="text" class="form-control" id="cns" aria-describedby="cns" value="<%= @patient.cns %>" readonly>
+					</div>
+					<div class="col-form-label col-md-4">
+						<label for="sisreg">Sisreg</label>
+						<input type="text" class="form-control" id="sisreg" aria-describedby="sisreg" value="<%= @patient.sisreg %>" readonly>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-form-label col-md-6">
+						<label for="status">Status</label>
+						<input type="text" class="form-control" id="status" aria-describedby="status" value="<%= Patient.human_enum_name(:status, @patient.status) %>" readonly>
+					</div>
+					<div class="col-form-label col-md-6">
+						<label for="airways">Ventilação</label>
+						<input type="text" class="form-control" id="airways" aria-describedby="airways" value="<%= Patient.human_enum_name(:airways, @patient.airways) %>" readonly>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="row mb-4 mt-4">
+	<div class="col">
+		<h1 class="float-left">Leito</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col">
+		<form>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-form-label col-md-6">
+						<label for="bed_type">Tipo de Cama</label>
+						<input type="text" class="form-control" id="bed_type" aria-describedby="bed_type" value="<%= PatientBed.human_enum_name(:bed_type, @patient.patient_bed&.bed_type) || 'Não informado' %>" readonly>
+					</div>
+					<div class="col-form-label col-md-6">
+						<label for="waiting_uti">Aguardando UTI?</label>
+						<input type="text" class="form-control" id="waiting_uti" aria-describedby="waiting_uti" value="<%= @patient.patient_bed ? @patient.patient_bed.waiting_uti ? 'Sim' : 'Não' : 'Não informado' %>" readonly>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="row mb-4 mt-4">
+	<div class="col">
+		<h1 class="float-left">Movimentação</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col">
+		<form>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-form-label col-md-6">
+						<label for="departure_date">Data de Movimentação</label>
+						<input type="text" class="form-control" id="departure_date" aria-describedby="departure_date" value="<%= l(@patient.departure_date, format: :long, default: 'Não informado') %>" readonly>
+					</div>
+					<div class="col-form-label col-md-6">
+						<label for="departure_reason">Motivo da Movimentação</label>
+						<input type="text" class="form-control" id="departure_reason" aria-describedby="departure_reason" value="<%= Patient.human_enum_name(:departure_reason, @patient.departure_reason) %>" readonly>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

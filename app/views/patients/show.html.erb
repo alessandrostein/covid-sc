@@ -76,20 +76,20 @@
   </div>
 </div>
 <div class="row">
-	<div class="col">
-		<form>
-			<div class="form-group">
-				<div class="row">
-					<div class="col-form-label col-md-6">
-						<label for="departure_date">Data de Movimentação</label>
-						<input type="text" class="form-control" id="departure_date" aria-describedby="departure_date" value="<%= l(@patient.departure_date, format: :long, default: 'Não informado') %>" readonly>
-					</div>
-					<div class="col-form-label col-md-6">
-						<label for="departure_reason">Motivo da Movimentação</label>
-						<input type="text" class="form-control" id="departure_reason" aria-describedby="departure_reason" value="<%= Patient.human_enum_name(:departure_reason, @patient.departure_reason) %>" readonly>
-					</div>
-				</div>
-			</div>
-		</form>
-	</div>
+  <div class="col">
+    <form>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-form-label col-md-6">
+            <label for="departure_date">Data de Movimentação</label>
+            <input type="text" class="form-control" id="departure_date" aria-describedby="departure_date" value="<%= l(@patient.departure_date, format: :long, default: 'Não informado') %>" readonly>
+          </div>
+          <div class="col-form-label col-md-6">
+            <label for="departure_reason">Motivo da Movimentação</label>
+            <input type="text" class="form-control" id="departure_reason" aria-describedby="departure_reason" value="<%= Patient.human_enum_name(:departure_reason, @patient.departure_reason) %>" readonly>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
